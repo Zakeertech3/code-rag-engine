@@ -161,7 +161,7 @@ Embeddings and reranking are hosted because the dev machine has limited RAM and 
 
 A new `average_expense` function is committed and pushed to the sample repo; the webhook auto-triggers a full re-index within seconds (5 files, 17 chunks, 17 points).
 
-![Push and commit](<img width="1464" height="483" alt="Image" src="https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a" />)
+![Push and commit]-<img width="1464" height="483" alt="Image" src="https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a" />
 ![Webhook auto re-index starting](<img width="1915" height="955" alt="Image" src="https://github.com/user-attachments/assets/0c7b584b-9b24-4d6f-baee-5152f30ba045" />)
 ![Re-index complete, 17 points](<img width="1463" height="514" alt="Image" src="https://github.com/user-attachments/assets/848e534b-6ca5-4a05-a785-61bea93b8c5a" />)
 
