@@ -1,4 +1,4 @@
-# code-rag-engine
+# Event-Driven Code RAG Slack Agent
 
 A code-aware RAG backend that answers natural-language questions about a GitHub repository from Slack, with event-driven re-indexing on every push. A user mentions the Slack bot and asks a question; the system retrieves the most relevant code chunks from a pre-built vector index, reranks them with a hosted reranker, and responds with a plain-language answer that cites exact files and line ranges. When a push is made to the indexed repository, a GitHub webhook triggers a full re-index automatically, so answers always reflect the current codebase.
 
