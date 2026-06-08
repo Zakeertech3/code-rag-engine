@@ -1,0 +1,46 @@
+[
+  {
+    "question": "how is an expense categorized",
+    "expected_files": ["categorizer.py"]
+  },
+  {
+    "question": "what are the default expense categories and their keywords",
+    "expected_files": ["categorizer.py"]
+  },
+  {
+    "question": "where are expenses stored",
+    "expected_files": ["storage.py"]
+  },
+  {
+    "question": "how do you filter expenses by month",
+    "expected_files": ["storage.py"]
+  },
+  {
+    "question": "how are expenses serialized to and loaded from JSON",
+    "expected_files": ["storage.py"]
+  },
+  {
+    "question": "what fields does the Expense dataclass have",
+    "expected_files": ["models.py"]
+  },
+  {
+    "question": "how do you check if an expense is uncategorized",
+    "expected_files": ["models.py"]
+  },
+  {
+    "question": "how is the total amount spent calculated",
+    "expected_files": ["reports.py"]
+  },
+  {
+    "question": "how is the top spending category determined",
+    "expected_files": ["reports.py"]
+  },
+  {
+    "question": "what does the main function do",
+    "expected_files": ["main.py"]
+  },
+  {
+    "question": "how are expenses categorized in bulk and then added to the store",
+    "expected_files": ["categorizer.py", "main.py"]
+  }
+]
