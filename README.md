@@ -155,6 +155,34 @@ Embeddings and reranking are hosted because the dev machine has limited RAM and 
 5. Rerank: send the fused candidate texts to the Jina reranker API, get back `top_n` items ordered by relevance score.
 6. Build a prompt from the reranked chunks, each labelled with file and line range. The system prompt instructs the LLM to answer only from the supplied code and to cite the exact labels. If chunks are empty, `generate` returns a not-found string without calling Groq.
 
+## Demo
+
+**Live re-indexing on push**
+
+A new `average_expense` function is committed and pushed to the sample repo; the webhook auto-triggers a full re-index within seconds (5 files, 17 chunks, 17 points).
+
+![Push and commit](<img width="1464" height="483" alt="Image" src="https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a" />)
+![Webhook auto re-index starting](<img width="1915" height="955" alt="Image" src="https://github.com/user-attachments/assets/0c7b584b-9b24-4d6f-baee-5152f30ba045" />)
+![Re-index complete, 17 points](<img width="1463" height="514" alt="Image" src="https://github.com/user-attachments/assets/848e534b-6ca5-4a05-a785-61bea93b8c5a" />)
+
+**Answering questions about newly pushed code**
+
+Seconds after the push, the agent explains the just-added `average_expense` function with exact line citations (reports.py L27-31), including the `total_spent` dependency it calls.
+
+![Answer with citations](PASTE_IMAGE_LINK_HERE)
+
+**Retrieval across files**
+
+Asked to walk through the app's startup, the agent traces `main.py`'s imports and the functions it calls across the `models`, `storage`, `categorizer`, and `reports` modules. It also surfaces a real retrieval edge case: the body of `main()` was not in the retrieved chunks, so the agent states this rather than guessing.
+
+![Cross-file walkthrough](PASTE_IMAGE_LINK_HERE)
+
+**Refusing out-of-context questions**
+
+Asked about Stripe payment processing and user authentication, neither of which exists in the codebase, the agent declines instead of inventing an answer.
+
+![Refusing an out-of-context question](PASTE_IMAGE_LINK_HERE)
+
 ## Setup
 
 ### Prerequisites
