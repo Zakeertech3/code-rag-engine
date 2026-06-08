@@ -177,7 +177,7 @@ A new `average_expense` function is committed and pushed to the sample repo; the
 
 Seconds after the push, the agent explains the just-added `average_expense` function with exact line citations, including the `total_spent` dependency it calls.
 
-![Answer with citations](PASTE_IMAGE_LINK_HERE)
+![Answer with citations](https://github.com/user-attachments/assets/ef9d0f22-8040-4945-8322-79055ecb7a37)
 
 *The agent answers about code that did not exist a minute earlier, citing reports.py L27-31.*
 
@@ -185,7 +185,7 @@ Seconds after the push, the agent explains the just-added `average_expense` func
 
 Asked to walk through the app's startup, the agent traces `main.py`'s imports and the functions it calls across modules, and honestly flags when a needed chunk was not retrieved.
 
-![Cross-file walkthrough](PASTE_IMAGE_LINK_HERE)
+![Cross-file walkthrough](https://github.com/user-attachments/assets/3fc4c1e1-9dc1-407e-b14a-07eb85acbdbd)
 
 *Tracing imports across modules, and stating when the body of main() was not in the retrieved chunks.*
 
@@ -193,7 +193,7 @@ Asked to walk through the app's startup, the agent traces `main.py`'s imports an
 
 Asked about Stripe payments and user authentication, neither of which exists in the codebase, the agent declines instead of inventing an answer.
 
-![Refusing an out-of-context question](PASTE_IMAGE_LINK_HERE)
+![Refusing an out-of-context question](https://github.com/user-attachments/assets/30ec7443-92b5-4c60-a4f6-f60f4108ed39)
 
 *The agent declines a question about code that does not exist, rather than hallucinating.*
 
