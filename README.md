@@ -161,27 +161,41 @@ Embeddings and reranking are hosted because the dev machine has limited RAM and 
 
 A new `average_expense` function is committed and pushed to the sample repo; the webhook auto-triggers a full re-index within seconds (5 files, 17 chunks, 17 points).
 
-![Push and commit](https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a)
-![Webhook auto re-index starting](https://github.com/user-attachments/assets/0c7b584b-9b24-4d6f-baee-5152f30ba045)
+![Push and commit](https://github.com/user-attachments/assets/0c7b584b-9b24-4d6f-baee-5152f30ba045)
+
+*Pushing a new function to the sample repo.*
+
+![Webhook auto re-index starting](https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a)
+
+*The webhook receives the push and starts a full re-index.*
+
 ![Re-index complete, 17 points](https://github.com/user-attachments/assets/848e534b-6ca5-4a05-a785-61bea93b8c5a)
+
+*Re-index completes automatically: 5 files, 17 chunks, 17 points.*
 
 **Answering questions about newly pushed code**
 
-Seconds after the push, the agent explains the just-added `average_expense` function with exact line citations (reports.py L27-31), including the `total_spent` dependency it calls.
+Seconds after the push, the agent explains the just-added `average_expense` function with exact line citations, including the `total_spent` dependency it calls.
 
 ![Answer with citations](PASTE_IMAGE_LINK_HERE)
 
+*The agent answers about code that did not exist a minute earlier, citing reports.py L27-31.*
+
 **Retrieval across files**
 
-Asked to walk through the app's startup, the agent traces `main.py`'s imports and the functions it calls across the `models`, `storage`, `categorizer`, and `reports` modules. It also surfaces a real retrieval edge case: the body of `main()` was not in the retrieved chunks, so the agent states this rather than guessing.
+Asked to walk through the app's startup, the agent traces `main.py`'s imports and the functions it calls across modules, and honestly flags when a needed chunk was not retrieved.
 
 ![Cross-file walkthrough](PASTE_IMAGE_LINK_HERE)
 
+*Tracing imports across modules, and stating when the body of main() was not in the retrieved chunks.*
+
 **Refusing out-of-context questions**
 
-Asked about Stripe payment processing and user authentication, neither of which exists in the codebase, the agent declines instead of inventing an answer.
+Asked about Stripe payments and user authentication, neither of which exists in the codebase, the agent declines instead of inventing an answer.
 
 ![Refusing an out-of-context question](PASTE_IMAGE_LINK_HERE)
+
+*The agent declines a question about code that does not exist, rather than hallucinating.*
 
 ## Setup
 
