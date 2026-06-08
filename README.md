@@ -14,6 +14,41 @@ A push to the indexed GitHub repository causes GitHub to call the webhook endpoi
 
 A Slack `@mention` triggers the Bolt Socket Mode handler. The bot adds an eyes reaction to signal it is working, strips the mention text to extract the question, runs hybrid retrieval (dense Qdrant search fused with TF-IDF BM25 via RRF, then reranked by the Jina reranker API), and passes the top chunks to the Groq LLM, which produces an answer citing the chunk file and line labels. The answer is posted back to the same Slack thread.
 
+### High-level view
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'monospace', 'lineColor':'#888888'}}}%%
+flowchart TB
+    subgraph FLOW_A["Indexing — runs automatically on every code push"]
+        direction TB
+        A1["Developer pushes to GitHub"] --> A2["Change notification received"]
+        A2 --> A3["Request verified as authentic"]
+        A3 --> A4["Fetch the latest code"]
+        A4 --> A5["Split code into meaningful pieces"]
+        A5 --> A6["Convert pieces to searchable form"]
+        A6 --> A7["Save to the knowledge base"]
+    end
+    A7 -->|save| QDRANT[("Code knowledge base")]
+    QDRANT -->|search| B1
+    subgraph FLOW_B["Answering — runs when someone asks a question"]
+        direction TB
+        B1["User asks a question in Slack"] --> B2["Question understood"]
+        B2 --> B3["Find the most relevant code"]
+        B3 --> B4["Generate an answer with sources"]
+        B4 --> B5["Reply in the Slack thread"]
+    end
+    classDef start fill:#1f6feb,stroke:#1f6feb,color:#ffffff,stroke-width:1px;
+    classDef step fill:#21262d,stroke:#30363d,color:#e6edf3,stroke-width:1px;
+    classDef data fill:#8957e5,stroke:#8957e5,color:#ffffff,stroke-width:2px;
+    class A1,B1,B5 start;
+    class A2,A3,A4,A5,A6,A7,B2,B3,B4 step;
+    class QDRANT data;
+    style FLOW_A fill:transparent,stroke:#3fb950,stroke-width:2px,color:#3fb950;
+    style FLOW_B fill:transparent,stroke:#58a6ff,stroke-width:2px,color:#58a6ff;
+```
+
+### Technical view
+
 ```mermaid
 flowchart TB
 
