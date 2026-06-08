@@ -165,11 +165,11 @@ A new `average_expense` function is committed and pushed to the sample repo; the
 
 *Pushing a new function to the sample repo.*
 
-![Webhook auto re-index starting](https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a)
+![Webhook auto re-index starting](https://github.com/user-attachments/assets/848e534b-6ca5-4a05-a785-61bea93b8c5a)
 
 *The webhook receives the push and starts a full re-index.*
 
-![Re-index complete, 17 points](https://github.com/user-attachments/assets/848e534b-6ca5-4a05-a785-61bea93b8c5a)
+![Re-index complete, 17 points](https://github.com/user-attachments/assets/6628c99d-e48f-458a-a55c-d71ea10b448a)
 
 *Re-index completes automatically: 5 files, 17 chunks, 17 points.*
 
